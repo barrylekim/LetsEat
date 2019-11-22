@@ -1,16 +1,22 @@
+require("dotenv").config();
 const express = require("express");
 var router = express.Router();
 // var request = require('request');
 var pg = require("pg");
 var client = new pg.Client(process.env.CONNECTIONSTR);
 client.connect();
-
+require("dotenv").config();
 
 
 
 var helper = require('./router/helpers')
 helper.createTables()
-
+var init = require('./router/init')
+init.addDummyUsers()
+init.addDummyCuisines()
+init.addDummyOutings()
+init.addDummyRestaurants()
+init.addDummyRestrictions()
 
 
 // //Tables: 
